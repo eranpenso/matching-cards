@@ -4,6 +4,9 @@ let hasFlippedCard = false;
 let lockBoard = false;
 var matchs_made=0
 let firstCard, secondCard;
+let moves_left = 12;
+document.getElementById("moveslefth1").innerHTML = moves_left+" moves left!";
+
 //AUDIO
 var match_audio = new Audio('audio/corrrectmatchsound.mp3')
 var wrong_audio = new Audio('audio/wrongmatchsound.mp3')
@@ -46,6 +49,12 @@ function checkForMatch() {
     unflipCards()
     wrong_audio.play()
   }
+  moves_left-=1
+  document.getElementById("moveslefth1").innerHTML = moves_left+" moves left!";
+  if(moves_left==0)
+  {
+    setTimeout(user_lost,1000)
+  }
 }
 
 function disableCards() {
@@ -81,6 +90,13 @@ function resetBoard() {
 function user_won()
 {
   matchs_made=0
+  matchs_made=0
   window.location.href = "congratspage.html";
+}
+function user_lost()
+{
+  matchs_made=0
+  matchs_made=0
+  window.location.href = "lostpage.html";
 }
 cards.forEach(card => card.addEventListener('click', flipCard));
