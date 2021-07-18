@@ -55,6 +55,11 @@ function checkForMatch() {
   {
     setTimeout(user_lost,1000)
   }
+  if(moves_left == 1)
+  {
+    document.getElementById("moveslefth1").innerHTML = moves_left+" move left!";
+
+  }
 }
 
 function disableCards() {
